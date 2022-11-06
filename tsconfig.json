@@ -1,5 +1,14 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@joker/interfaces/*": [ "src/app/@joker/interfaces/*" ],
+      "@joker/models/*": [ "src/app/@joker/models/*" ],
+      "@joker/modules/*": [ "src/app/@joker/modules/*" ],
+      "@joker/components/*": [ "src/app/@joker/common/components/*" ],
+      "@joker/hooks/*": [ "src/app/@joker/common/hooks/*" ],
+      "@joker/utils/*": [ "src/app/@joker/common/utils/*" ],
+    },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
