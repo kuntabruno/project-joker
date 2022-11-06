@@ -6,7 +6,7 @@ import { randomJokeInCategoryApiUrl } from 'src/@joker/common/utils/jokes-api-ut
 
 const fetcher = (apiUrl: string) => fetch(apiUrl).then(res => res.json());
 
-function useRandomJoke(categoryName: string): { joke?: Joke, isLoading: boolean, isError: boolean } {
+function useRandomJokeInCategory(categoryName?: string): { joke?: Joke, isLoading: boolean, isError: boolean } {
     const { data, error } = useSWR(randomJokeInCategoryApiUrl(categoryName), fetcher)
 
     return {
@@ -16,4 +16,4 @@ function useRandomJoke(categoryName: string): { joke?: Joke, isLoading: boolean,
     }
 }
 
-export default useRandomJoke;
+export default useRandomJokeInCategory;

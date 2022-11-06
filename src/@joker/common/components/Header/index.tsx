@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import SearchForm from "../Search/SearchForm";
 import styles from './Header.module.scss';
 
@@ -8,7 +9,7 @@ export default function Header() {
             <div className="flex flex-row items-start justify-center">
 
                      <div className="logo w-1/5 flex flex-row justify-center">
-                        <span className="hover:bg-gray-200">Project Joker</span>
+                     <Link href="/"><span className="hover:bg-gray-200">Project Joker</span></Link>
                      </div>
 
                      <div className="w-3/5 flex flex-row items-start justify-start">
