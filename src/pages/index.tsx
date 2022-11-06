@@ -1,57 +1,63 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import CategoryCard from 'src/@joker/common/components/CategoryCard';
+import Header from 'src/@joker/common/components/Header';
+import useCategories from 'src/@joker/common/hooks/categories';
+import { ICategoryButtonProps } from 'src/@joker/interfaces/category-button/category-button-props.interface';
 import styles from '../styles/Home.module.css'
 
 export default function HomePage() {
+
+  const { categories, isLoading, isError } = useCategories();
+
+  if (isLoading) return <h1>Loading...</h1>;
+  if (isError) return <h1>Error</h1>;
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Jokes App | Home</title>
         <meta name="description" content="Jokes App Home Page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <Header/>
+      <main className="px-8">
+          
+          {/* <div className="flex flex-row flex-start justify-start w-100 h-screen">
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
+               <div className="w-3/12 bg-gray-200 border-r-2 border-indigo-300">
+                   
+               </div>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+              <div className="w-9/12">
+                   
+              {
+                Array.from(categories).map((record: ICategoryButtonProps) => { 
+                return ( 
+                <h1 key={record.id}>{record.id} { record.name }</h1> 
+                )})
+            }
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+              </div>
+          </div> */}
 
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+          <div className="flex flex-col">
+              <span className="font-bold text-2xl mb-10 sm:ml-20 ml-1">Pick a Category</span>
+          </div>
+          <div className="flex flex-row flex-wrap items-start content-start justify-start w-100 h-screen pt-8">
+                  
+            {
+                Array.from(categories).map((record: ICategoryButtonProps) => { 
+                return ( 
+                <div key={record.id} className="ml-4 mb-7 w-1/5">
+                  <CategoryCard name={record.name} id={record.id} url="{record.url}"></CategoryCard>
+                </div> 
+                )})
+            }
+
+          </div>
+
       </main>
 
       <footer className={styles.footer}>
