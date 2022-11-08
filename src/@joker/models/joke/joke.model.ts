@@ -1,4 +1,4 @@
-import { IJoke } from "@joker/interfaces/joke/joke.interface";
+import { IJoke } from "src/@joker/interfaces/joke/joke.interface";
 
 export class Joke implements IJoke {
     public id!: string;
