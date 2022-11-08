@@ -5,3 +5,5 @@ export const categoriesUrl = () => `${BASE_API_URL}/jokes/categories`;
 export const randomJokeApiUrl = () => `${BASE_API_URL}/jokes/random`;
 
 export const randomJokeInCategoryApiUrl = (category?: string) => `${BASE_API_URL}/jokes/random?category=${category}`;
+
+export const searchJokeApiUrl = (searchText: string) => `${BASE_API_URL}/jokes/search?query=${searchText}`;

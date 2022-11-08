@@ -1,6 +1,6 @@
 import useSWR from "swr";
 
-import { ICategoryButtonProps } from "@joker/interfaces/category-button/category-button-props.interface";
+import { ICategoryButtonProps } from "src/@joker/interfaces/category-button/category-button-props.interface";
 import { categoriesUrl } from 'src/@joker/common/utils/jokes-api-utils';
 
 

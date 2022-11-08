@@ -18,7 +18,7 @@ export default function Header() {
 
                      <div className="sm:w-8/12">
                         <div className="flex flex-row items-start w-full"> 
-                           <div className="sm:ml-40">
+                           <div className="sm:ml-36">
                               <SearchForm/>
                            </div>
                         </div>

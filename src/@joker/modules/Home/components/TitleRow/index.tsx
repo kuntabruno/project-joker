@@ -8,7 +8,7 @@ export default function TitleBar() {
               <span className="font-bold text-2xl mb-2">Explore Jokes By Category</span>
               <span className="text-gray-400 font-medium text-sm">Pick a Category Below</span>
              </div>
-              <Link href="/jokes">Random Joke</Link>
+              <Link href="/jokes"><span className="border-gray-300 border-2 hover:border-blue-200 hover:bg-gray-200 transition duration-150 ease-in-out rounded-lg px-2 py-1 font-medium hover:text-gray-400">Random Joke</span></Link>
             </div>
         </div>
     );

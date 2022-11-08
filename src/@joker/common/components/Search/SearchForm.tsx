@@ -1,7 +1,7 @@
 export default function SearchForm() {
   return (
-    <div className="flex justify-center">
-      <div className="mb-3 xl:w-96">
+    <div className="flex flex-row items-center justify-center">
+      <div className="xl:w-96">
         <input
           type="search"
           className="
@@ -11,7 +11,7 @@ export default function SearchForm() {
                     px-3
                     py-1.5
                     text-base
-                    font-normal
+                    font-bold
                     text-gray-700
                     bg-gray-200 bg-clip-padding
                     border border-solid
@@ -24,6 +24,7 @@ export default function SearchForm() {
           placeholder="Search Here..."
         />
       </div>
+      <button className="ml-3 px-6 py-2.5 bg-blue-600 text-white font-medium text-sm leading-tight capitalize rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Search</button>
     </div>
   );
 }
