@@ -9,6 +9,7 @@ import {
 import useCategories from 'src/@joker/common/hooks/categories';
 
 import { TitleBar, CategoriesCardsGrid } from 'src/@joker/modules/Home';
+import DocHead from 'src/@joker/common/components/DocHead';
 
 export async function getStaticProps() {
   const categories = await getJokesCategoriesFromApi();
@@ -28,11 +29,12 @@ const HomePage: any = ({ fallback }: { fallback: any }) => {
   if (isError) return <h1>Error</h1>;
   return (
     <div>
-      <Head>
+      {/* <Head>
         <title>Jokes App | Home</title>
         <meta name='description' content='Jokes App Home Page' />
         <link rel='icon' href='/favicon.ico' />
-      </Head>
+      </Head> */}
+      <DocHead title="Jokes App | Home" description="Jokes App Home Page"/>
       <div className='px-8'>
         <TitleBar />
         <SWRConfig value={{ fallback }}>
