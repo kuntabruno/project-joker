@@ -1,8 +1,13 @@
+import { useRouter } from "next/router";
 import { Fragment } from "react";
+import { MdArrowBack } from 'react-icons/md';
+
 import useSearchJoke from "src/@joker/common/hooks/search-jokes";
 import JokeCardsListComponent from "../JokeCardsListComponent";
 
 export default function ValidSearchTextComponent({ searchText }: { searchText: string }) {
+
+    const router = useRouter();
 
     const { result: searchResult, isLoading, isError } = useSearchJoke(searchText);
 
@@ -18,7 +23,11 @@ export default function ValidSearchTextComponent({ searchText }: { searchText: s
              
              <div className="flex flex-row items-start content-center">
 
-                <div className="flex flex-col">
+                <div onClick={() => router.back()} className="hover:bg-gray-200 transition duration-150 ease-in-out rounded-lg">
+                    <MdArrowBack size='30'></MdArrowBack>
+                </div>
+
+                <div className="flex flex-col ml-3">
                      <span className="font-bold text-gray-800 text-2xl">{`You Searched "${searchText}"`}</span>
                      <span className="text-gray-400 font-semibold text-base">{`${total} Results`}</span>
                 </div>
