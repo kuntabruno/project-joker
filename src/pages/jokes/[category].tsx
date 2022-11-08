@@ -1,49 +1,62 @@
-import { useSWRConfig } from 'swr';
+import { useRouter } from 'next/router';
 
-import useRandomJokeInCategory from 'src/@joker/common/hooks/random-joke-in-category';
+import useCategories from 'src/@joker/common/hooks/categories';
 
-import DocHead from 'src/@joker/common/components/DocHead';
-import JokeComponent from 'src/@joker/common/components/Joke';
-import SidebarLayout from 'src/@joker/common/components/SidebarLayout';
-import BackToHomeButton from 'src/@joker/common/components/BackToHomeButton';
-import { LoadNewJokeButton } from 'src/@joker/modules/Jokes/components/LoadNewJokeButton';
+import ValidJokeComponent from 'src/@joker/modules/Jokes/components/ValidJokeComponent';
 
-import { randomJokeInCategoryApiUrl } from 'src/@joker/common/utils';
+import { ICategoryButtonProps } from 'src/@joker/interfaces/category-button/category-button-props.interface';
 
-import styles from './Joke.module.scss';
+import JokeDetailDefinedErrorComponent from 'src/@joker/modules/Jokes/components/JokeDetailDefinedErrorComponent';
 
-export default function RandomJokeInCategoryPage({ query }: { query: any }) {
+export default function RandomJokeInCategoryPage() {
+  const router = useRouter();
+  const {
+    categories,
+    isError,
+    isLoading: isCategoriesLoading,
+  } = useCategories();
 
-    const { mutate } = useSWRConfig()
-    const { joke, isLoading, isError } = useRandomJokeInCategory(query.category);
+  const { category: queryCategory } = router.query;
 
-    function handleLoadNewJoke() {
-      mutate(randomJokeInCategoryApiUrl(query.category));
-    }
-    if (isLoading) return <h1>Loading...</h1>;
-    if (isError) return <h1>Error</h1>;
-
-    if (joke)
+  if (typeof queryCategory !== 'string')
     return (
-      <div>
-        <DocHead title={`${query.category} Joke`} description={`View ${query.category} joke`}></DocHead>
-        <SidebarLayout>
-        <div className={styles.jokeSection}>
-              <div className="flex flex-col px-6 relative h-full">
-              <BackToHomeButton></BackToHomeButton>
-                <div className="flex flex-row items-start justify-center w-full px-6">  
-                 {  
-                 <JokeComponent id={joke.id} url={joke.url} value={joke.value} icon_url={joke.icon_url} created_at={joke.created_at} updated_at={joke.updated_at} categories={joke.categories}></JokeComponent>
-                 }
-                 </div>
-                 <LoadNewJokeButton handleLoadNewJoke={handleLoadNewJoke} buttonText="Load New Joke"></LoadNewJokeButton>
-              </div>
-          </div>
-        </SidebarLayout>
-      </div>
+        <JokeDetailDefinedErrorComponent
+          headTitle="Unsupported Parameter"
+          headDescription="Error Occurred"
+          errorMessage="Unsupported Parameter, please contact support"
+        ></JokeDetailDefinedErrorComponent>
     );
-}
 
-RandomJokeInCategoryPage.getInitialProps = ({ query }: { query: any }) => {
-    return {query}
+  function isCategoryValid(
+    categories: ICategoryButtonProps[],
+    categoryName: string
+  ): boolean {
+    return categories.findIndex(
+      (category) =>
+        category &&
+        category.name &&
+        categoryName &&
+        categoryName === category.name
+    ) === -1
+      ? false
+      : true;
   }
+
+  if (isCategoriesLoading) return <h1>Loading...</h1>;
+
+  if (isError) return <h1>Error</h1>;
+
+  if (!isCategoryValid(categories, queryCategory)) {
+    return (
+        <JokeDetailDefinedErrorComponent
+          headTitle={`${queryCategory} Joke`}
+          headDescription={`View ${queryCategory} joke`}
+          errorMessage={`Invalid Category. The category provided${queryCategory ? `, '${queryCategory}'` : ''} is not a supported Jokes category`}
+        ></JokeDetailDefinedErrorComponent>
+    );
+  }
+
+  return (
+      <ValidJokeComponent category={queryCategory}></ValidJokeComponent>
+  );
+}

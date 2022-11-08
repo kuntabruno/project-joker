@@ -1,6 +1,6 @@
 import styles from './LoadNewJokeButton.module.scss';
 
-export function LoadNewJokeButton({
+export default function LoadNewJokeButton({
   buttonText = 'Load New',
   handleLoadNewJoke,
 }: {
