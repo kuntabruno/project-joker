@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { FaGithub } from "react-icons/fa";
 import SearchForm from "../Search/SearchForm";
 import styles from './Header.module.scss';
 
@@ -25,6 +26,11 @@ export default function Header() {
                      </div>
 
                      <div className="sm:w-2/12">
+                     <div className="flex flex-row items-center w-full">
+                        <a href="https://github.com/kuntabruno/project-joker/tree/bco-implementation" target="_blank" rel="noreferrer" className="flex flex-row items-center w-full">   
+                        <FaGithub size="2rem"></FaGithub>
+                        </a>
+                     </div>
                      </div>
 
             </div>

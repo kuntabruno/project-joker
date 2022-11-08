@@ -28,10 +28,12 @@ const HomePage: any = ({ fallback }: { fallback: any }) => {
   return (
     <div>
       <DocHead title="Pick a Category - Home Page" description="Pick a category to view a joke in category"/>
-      <div className='px-6'>
+      <div className="px-6">
         <TitleBar />
         <SWRConfig value={{ fallback }}>
-          <CategoriesCardsGrid categories={categories} />
+          <div className="flex flex-row items-start justify-center sm:mx-20 mx-1">
+            <CategoriesCardsGrid categories={categories} />
+          </div>
         </SWRConfig>
       </div>
     </div>

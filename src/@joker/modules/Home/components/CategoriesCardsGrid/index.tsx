@@ -15,10 +15,10 @@ export default function CategoriesCardsGrid({
     );
   }
   return (
-    <div className='flex flex-row flex-wrap items-start content-start justify-start w-100 pt-8'>
+    <div className='flex flex-row flex-wrap items-start content-center justify-start w-100 pt-8'>
       {Array.from(categories).map((record: ICategoryButtonProps) => {
         return (
-          <div key={record.id} className='ml-4 mb-7 w-1/5'>
+          <div key={record.id} className='pr-4 mb-7 w-1/4'>
             <CategoryCard
               name={record.name}
               id={record.id}

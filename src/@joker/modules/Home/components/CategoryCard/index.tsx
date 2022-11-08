@@ -4,8 +4,8 @@ import { ICategoryButtonProps } from 'src/@joker/interfaces/category-button/cate
 
 export default function CategoryCard({ id, name, url }: ICategoryButtonProps) {
   return (
-    <div className='flex justify-center'>
-      <div className='block p-6 rounded-lg shadow-lg bg-white max-w-sm'>
+    <div className='w-full border-r-2 border-y-2 rounded-lg border-gray-200'>
+      <div className='block p-6 rounded-lg bg-white border-l-4 border-blue-400'>
         <h5 className='text-2xl leading-tight font-bold mb-2 text-gray-500'>
           #{name}
         </h5>
