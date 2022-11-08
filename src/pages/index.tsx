@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { ReactElement, Fragment } from 'react';
 import { SWRConfig } from 'swr';
 
@@ -29,13 +28,8 @@ const HomePage: any = ({ fallback }: { fallback: any }) => {
   if (isError) return <h1>Error</h1>;
   return (
     <div>
-      {/* <Head>
-        <title>Jokes App | Home</title>
-        <meta name='description' content='Jokes App Home Page' />
-        <link rel='icon' href='/favicon.ico' />
-      </Head> */}
-      <DocHead title="Jokes App | Home" description="Jokes App Home Page"/>
-      <div className='px-8'>
+      <DocHead title="Pick a Category - Home Page" description="Pick a category to view a joke in category"/>
+      <div className='px-6'>
         <TitleBar />
         <SWRConfig value={{ fallback }}>
           <CategoriesCardsGrid categories={categories} />
@@ -43,10 +37,6 @@ const HomePage: any = ({ fallback }: { fallback: any }) => {
       </div>
     </div>
   );
-};
-
-HomePage.getLayout = function getLayout(page: ReactElement) {
-  return <Fragment>{page}</Fragment>;
 };
 
 export default HomePage;

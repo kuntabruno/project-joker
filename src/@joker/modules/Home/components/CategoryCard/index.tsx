@@ -6,7 +6,7 @@ export default function CategoryCard({ id, name, url }: ICategoryButtonProps) {
   return (
     <div className='flex justify-center'>
       <div className='block p-6 rounded-lg shadow-lg bg-white max-w-sm'>
-        <h5 className='text-xl leading-tight font-bold mb-2 text-gray-500'>
+        <h5 className='text-2xl leading-tight font-bold mb-2 text-gray-500'>
           #{name}
         </h5>
         <Link href={`/jokes/${name}`}>

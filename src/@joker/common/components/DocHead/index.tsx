@@ -9,7 +9,7 @@ export default function DocHead({
 }) {
   return (
     <Head>
-      <title>{title}</title>
+      <title>{`${title} | Project Joker`}</title>
       <meta name='description' content={description} />
       <link rel='icon' href='/favicon.ico' />
     </Head>

@@ -6,8 +6,11 @@ export default function CategoryButtonsList({ categories }: { categories: ICateg
     
     if (!categories || categories.length === 0) return <span className="text-gray-400 font-bold">No Categories to Show</span>
     return (
-       categories.map((category) => {
+      <React.Fragment>
+         {
+         categories.map((category) => {
           return <CategoryButton key={category.id} id={category.id} url={category.url} name={category.name}/>
-       })
+         })}
+      </React.Fragment>
     );
 }

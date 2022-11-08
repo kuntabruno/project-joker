@@ -8,12 +8,14 @@ export default function CategoryButton({
 }: ICategoryButtonProps) {
   return (
     <React.Fragment>
+      <div className='border-l-2 border-neutral-100'>
       <button
         type='button'
-        className='w-full inline-block px-6 py-2 text-gray-800 hover:text-gray-500 font-medium text-xs leading-normal uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out'
+        className='w-full p-2 text-gray-800 hover:text-gray-500 font-medium text-xs leading-normal capitalize rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out'
       >
         {name}
       </button>
+      </div>
     </React.Fragment>
   );
 }
