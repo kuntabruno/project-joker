@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
       "@joker/interfaces/*": [ "src/app/@joker/interfaces/*" ],
       "@joker/models/*": [ "src/app/@joker/models/*" ],
