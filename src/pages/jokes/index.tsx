@@ -6,11 +6,12 @@ import DocHead from 'src/@joker/common/components/DocHead';
 import JokeComponent from 'src/@joker/common/components/Joke';
 import SidebarLayout from 'src/@joker/common/components/SidebarLayout';
 import BackToHomeButton from 'src/@joker/common/components/BackToHomeButton';
+import { LoadNewJokeButton } from 'src/@joker/modules/Jokes/components/LoadNewJokeButton';
 
 import { randomJokeApiUrl } from 'src/@joker/common/utils';
 
 import styles from './Joke.module.scss';
-import { LoadNewJokeButton } from 'src/@joker/modules/Jokes/components/LoadNewJokeButton';
+
 
 const RandomJokePage = () => {
 
