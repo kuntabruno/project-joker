@@ -1,13 +1,27 @@
 import Head from 'next/head';
 import { ReactElement, Fragment } from 'react';
+import { SWRConfig } from 'swr';
 
+import {
+  categoriesUrl,
+  getJokesCategoriesFromApi,
+} from 'src/@joker/common/utils';
 import useCategories from 'src/@joker/common/hooks/categories';
 
 import { TitleBar, CategoriesCardsGrid } from 'src/@joker/modules/Home';
 
-import { NextPageWithLayout } from './_app';
+export async function getStaticProps() {
+  const categories = await getJokesCategoriesFromApi();
+  return {
+    props: {
+      fallback: {
+        [categoriesUrl()]: categories,
+      },
+    },
+  };
+}
 
-const HomePage: NextPageWithLayout = () => {
+const HomePage: any = ({ fallback }: { fallback: any }) => {
   const { categories, isLoading, isError } = useCategories();
 
   if (isLoading) return <h1>Loading...</h1>;
@@ -21,7 +35,9 @@ const HomePage: NextPageWithLayout = () => {
       </Head>
       <div className='px-8'>
         <TitleBar />
-        <CategoriesCardsGrid categories={categories} />
+        <SWRConfig value={{ fallback }}>
+          <CategoriesCardsGrid categories={categories} />
+        </SWRConfig>
       </div>
     </div>
   );
