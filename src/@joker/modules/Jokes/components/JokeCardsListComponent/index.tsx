@@ -14,9 +14,9 @@ export default function JokeCardsListComponent({
 }) {
   if (!jokes || !jokes.length) {
     return (
-      <div className='flex flex-col justify-center mt-20 mx-4 h-full'>
-        <span className='text-center font-semibold text-gray-400 text-2xl'>
-          Sorry! No jokes matching {searchText} was found.
+      <div className='flex flex-col justify-center mx-4 sm:h-5/6 h-full'>
+        <span className='text-center font-semibold text-gray-400 text-2xl -mt-32'>
+          {`Sorry! No jokes matching "${searchText}" was found.`}
         </span>
       </div>
     );

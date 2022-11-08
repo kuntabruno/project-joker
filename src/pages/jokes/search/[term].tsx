@@ -2,8 +2,6 @@ import ValidSearchTextComponent from 'src/@joker/modules/Jokes/components/ValidS
 import styles from './SearchJokes.module.scss';
 
 export default function JokesSearchPage({ query }: { query: any }) {
-  
-   console.log(query);
    const { term } = query;
    
    if (!term || term === 'undefined') {

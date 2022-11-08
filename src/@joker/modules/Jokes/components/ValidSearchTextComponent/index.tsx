@@ -1,7 +1,5 @@
 import { Fragment } from "react";
 import useSearchJoke from "src/@joker/common/hooks/search-jokes";
-import { IJoke } from "src/@joker/interfaces/joke/joke.interface";
-import { Joke } from "src/@joker/models/joke/joke.model";
 import JokeCardsListComponent from "../JokeCardsListComponent";
 
 export default function ValidSearchTextComponent({ searchText }: { searchText: string }) {
