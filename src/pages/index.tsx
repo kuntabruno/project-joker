@@ -1,4 +1,3 @@
-import { ReactElement, Fragment } from 'react';
 import { SWRConfig } from 'swr';
 
 import {
